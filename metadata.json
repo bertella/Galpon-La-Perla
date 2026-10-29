@@ -1,0 +1,6 @@
+{
+  "name": "Galpón Industrial La Perla - Alquiler Malagueño",
+  "description": "Landing page de alto impacto comercial para el alquiler de galpón industrial en La Perla, Malagueño (Córdoba). 320 m² cubiertos, 120 m² de maniobras y acceso inmediato a Colectora hacia Carlos Paz.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
