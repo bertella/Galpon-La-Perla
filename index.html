@@ -501,24 +501,63 @@
     </a>
 
     <!-- ========================================== -->
-    <!-- LIGHTBOX MODAL -->
+    <!-- LIGHTBOX MODAL WITH FULL TOUCH SLIDER SUPPORT -->
     <!-- ========================================== -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/85 hidden flex items-center justify-center p-4" onclick="closeLightbox(event)">
-      <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 hidden flex items-center justify-center p-3 sm:p-4 select-none" onclick="closeLightbox(event)">
+      <div class="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center" onclick="event.stopPropagation()">
         
-        <button 
-          onclick="closeLightboxDirect()" 
-          class="absolute -top-10 right-0 p-1.5 text-white/80 hover:text-white rounded transition-colors text-sm font-semibold"
-          title="Cerrar (Esc)"
-        >
-          ✕ Cerrar
-        </button>
-
-        <div class="w-full flex items-center justify-center overflow-hidden rounded bg-black">
-          <img id="lightboxImg" src="" alt="Fotografía ampliada" class="max-w-full max-h-[75vh] object-contain" />
+        <!-- Top bar: Counter & Close button -->
+        <div class="w-full flex items-center justify-between pb-2 text-white/90">
+          <div class="px-2.5 py-1 rounded bg-white/10 text-xs font-mono font-semibold tabular-nums">
+            <span id="lightboxCounter">1</span> / 10
+          </div>
+          <button 
+            type="button"
+            onclick="closeLightboxDirect()" 
+            class="flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/15 hover:bg-white/25 active:scale-95 text-white transition-all text-xs font-semibold cursor-pointer"
+            title="Cerrar (Esc)"
+          >
+            <span>Cerrar</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
         </div>
 
-        <p id="lightboxCaption" class="w-full mt-2 text-center text-xs text-white/80 font-medium"></p>
+        <!-- Image viewport with swipe and navigation buttons -->
+        <div class="relative w-full flex items-center justify-center overflow-hidden rounded-lg bg-black/60" id="lightboxTrack">
+          <img 
+            id="lightboxImg" 
+            src="" 
+            alt="Fotografía ampliada" 
+            class="max-w-full max-h-[75vh] object-contain transition-opacity duration-200" 
+          />
+
+          <!-- Prev Button -->
+          <button 
+            type="button"
+            onclick="prevLightboxSlide(event)" 
+            aria-label="Foto anterior" 
+            class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/65 hover:bg-black/90 active:scale-90 text-white flex items-center justify-center transition-all focus:outline-none shadow-lg cursor-pointer"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+          </button>
+
+          <!-- Next Button -->
+          <button 
+            type="button"
+            onclick="nextLightboxSlide(event)" 
+            aria-label="Foto siguiente" 
+            class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/65 hover:bg-black/90 active:scale-90 text-white flex items-center justify-center transition-all focus:outline-none shadow-lg cursor-pointer"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+
+        <!-- Caption & mobile hint -->
+        <div class="w-full mt-2.5 px-2 flex flex-col sm:flex-row items-center justify-between text-xs text-white/80 gap-1 text-center sm:text-left">
+          <p id="lightboxCaption" class="font-medium text-white"></p>
+          <span class="text-white/50 text-[11px]">Deslizá o usá las flechas para ver las demás fotos</span>
+        </div>
+
       </div>
     </div>
 
@@ -660,29 +699,52 @@
         }, { passive: true });
       }
 
-      // Lightbox functionality
-      function openLightbox(src, caption) {
-        var modal = document.getElementById('lightboxModal');
+      // Lightbox functionality with full sliding & touch support
+      var lightboxIndex = 0;
+
+      function updateLightboxContent(index) {
+        if (index < 0) index = propertyPhotos.length - 1;
+        if (index >= propertyPhotos.length) index = 0;
+        lightboxIndex = index;
+        currentSlide = index;
+
+        var photo = propertyPhotos[lightboxIndex];
         var img = document.getElementById('lightboxImg');
         var cap = document.getElementById('lightboxCaption');
-        
-        img.src = src;
-        img.onerror = function() {
-          if (!this.dataset.tried) {
-            this.dataset.tried = 1;
-            if (src.indexOf('./assets/') === 0) {
-              this.src = src.replace('./assets/', './public/assets/');
-            }
-          }
-        };
-        cap.textContent = caption || '';
+        var counter = document.getElementById('lightboxCounter');
+
+        if (img) {
+          img.src = photo.src;
+          img.dataset.filename = photo.filename;
+          img.alt = photo.caption;
+        }
+        if (cap) cap.textContent = photo.caption;
+        if (counter) counter.textContent = (lightboxIndex + 1);
+
+        // Keep background carousel in sync
+        renderCarouselSlide(currentSlide);
+      }
+
+      function nextLightboxSlide(e) {
+        if (e) e.stopPropagation();
+        updateLightboxContent(lightboxIndex + 1);
+      }
+
+      function prevLightboxSlide(e) {
+        if (e) e.stopPropagation();
+        updateLightboxContent(lightboxIndex - 1);
+      }
+
+      function openCarouselLightbox() {
+        var modal = document.getElementById('lightboxModal');
+        updateLightboxContent(currentSlide);
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
 
       function closeLightboxDirect() {
         var modal = document.getElementById('lightboxModal');
-        modal.classList.add('hidden');
+        if (modal) modal.classList.add('hidden');
         document.body.style.overflow = '';
       }
 
@@ -692,21 +754,47 @@
         }
       }
 
+      // Touch swipe gestures inside Lightbox for mobile
+      function initLightboxTouchGestures() {
+        var track = document.getElementById('lightboxTrack');
+        if (!track) return;
+        var startX = 0;
+        var endX = 0;
+
+        track.addEventListener('touchstart', function(e) {
+          startX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', function(e) {
+          endX = e.changedTouches[0].screenX;
+          if (endX < startX - 40) {
+            nextLightboxSlide();
+          } else if (endX > startX + 40) {
+            prevLightboxSlide();
+          }
+        }, { passive: true });
+      }
+
       document.addEventListener('keydown', function(e) {
+        var modal = document.getElementById('lightboxModal');
+        var isModalOpen = modal && !modal.classList.contains('hidden');
+
         if (e.key === 'Escape') {
           closeLightboxDirect();
         } else if (e.key === 'ArrowRight') {
-          nextSlide();
+          if (isModalOpen) {
+            nextLightboxSlide();
+          } else {
+            nextSlide();
+          }
         } else if (e.key === 'ArrowLeft') {
-          prevSlide();
+          if (isModalOpen) {
+            prevLightboxSlide();
+          } else {
+            prevSlide();
+          }
         }
       });
-
-      // Open Lightbox from carousel
-      function openCarouselLightbox() {
-        var photo = propertyPhotos[currentSlide];
-        openLightbox(photo.src, photo.caption);
-      }
 
       // Copy Address / Map Link
       function copyLocationLink() {
@@ -765,6 +853,7 @@
       function initApp() {
         initCarouselDots();
         initTouchGestures();
+        initLightboxTouchGestures();
         renderCarouselSlide(0);
         initScrollFadeAnimations();
       }
