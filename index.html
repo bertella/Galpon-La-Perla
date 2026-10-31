@@ -109,6 +109,7 @@
         <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
           <a href="#caracteristicas" class="hover:text-slate-900 transition-colors">Características</a>
           <a href="#ubicacion" class="hover:text-slate-900 transition-colors">Ubicación</a>
+          <a href="#requisitos" class="hover:text-slate-900 transition-colors">Requisitos</a>
           <a href="#contacto" class="hover:text-slate-900 transition-colors">Contacto</a>
         </nav>
 
@@ -418,9 +419,158 @@
       </section>
 
       <!-- ========================================== -->
-      <!-- 6. CONTACTO DIRECTO (Sin formularios sobrecargados) -->
+      <!-- 6. REQUISITOS PARA ALQUILAR -->
       <!-- ========================================== -->
-      <section id="contacto" class="py-14 sm:py-16 bg-white border-b border-slate-200 transition-all duration-700 ease-out opacity-0 translate-y-8 motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none">
+      <section id="requisitos" class="py-14 sm:py-16 bg-white border-b border-slate-200 transition-all duration-700 ease-out opacity-0 translate-y-8 motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="max-w-2xl mb-10">
+            <span class="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold">Condiciones Contractuales</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-1">
+              Requisitos para Alquilar
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+              Para iniciar el proceso de alquiler, es necesario presentar la siguiente documentación:
+            </p>
+          </div>
+
+          <!-- 4 Requisitos Cards (2x2 Grid) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- 1. Documentación del inquilino -->
+            <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-slate-400">01</span>
+                <span class="text-xs font-medium text-slate-500 uppercase tracking-wide">Inquilino</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900">1. Documentación del inquilino</h3>
+              <ul class="space-y-2.5 text-sm text-slate-600">
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>DNI frente y dorso.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Últimos 3 recibos de sueldo o comprobantes de ingresos.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Antigüedad laboral comprobable.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>En caso de trabajadores independientes: constancia de inscripción en ARCA y documentación que acredite ingresos.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 2. Garantías laborales -->
+            <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-slate-400">02</span>
+                <span class="text-xs font-medium text-slate-500 uppercase tracking-wide">Garantes</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900">2. Garantías laborales</h3>
+              <ul class="space-y-2.5 text-sm text-slate-600">
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Presentar garantes con recibos de sueldo.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Últimos 3 recibos de sueldo de cada garante.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>DNI frente y dorso.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Antigüedad laboral comprobable.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Ingresos suficientes para respaldar la obligación contractual.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 3. Garantía propietaria -->
+            <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-slate-400">03</span>
+                <span class="text-xs font-medium text-slate-500 uppercase tracking-wide">Inmueble</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900">3. Garantía propietaria</h3>
+              <ul class="space-y-2.5 text-sm text-slate-600">
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Escritura del inmueble ofrecido como garantía.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>DNI de los titulares.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>El inmueble deberá estar ubicado en la provincia de Córdoba.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Se solicitarán los informes registrales correspondientes para verificar su situación jurídica.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 4. Consideraciones generales -->
+            <div class="p-6 rounded-xl bg-slate-50 border border-slate-200 shadow-2xs space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-slate-400">04</span>
+                <span class="text-xs font-medium text-slate-500 uppercase tracking-wide">Evaluación</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-900">4. Consideraciones generales</h3>
+              <ul class="space-y-2.5 text-sm text-slate-600">
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>La documentación presentada estará sujeta a evaluación y aprobación.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Los ingresos deberán ser demostrables y suficientes para afrontar las obligaciones del contrato.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  <span>Las garantías deberán acreditar solvencia y capacidad de respaldo durante la relación contractual.</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Asesoramiento Callout Box -->
+          <div class="mt-8 p-5 sm:p-6 rounded-xl bg-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="space-y-1 text-center sm:text-left">
+              <p class="font-bold text-base sm:text-lg">¿Tenés dudas sobre los requisitos?</p>
+              <p class="text-sm text-slate-300">Contactanos y te asesoramos para que puedas preparar tu documentación antes de iniciar el trámite.</p>
+            </div>
+            <a 
+              href="https://wa.me/5493512042270?text=Hola,%20tengo%20una%20consulta%20sobre%20los%20requisitos%20para%20alquilar%20el%20galp%C3%B3n%20en%20La%20Perla,%20Malague%C3%B1o."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-semibold text-slate-900 bg-white hover:bg-slate-100 rounded-md transition-colors whitespace-nowrap shrink-0 shadow-sm"
+            >
+              <span>Consultar Requisitos</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 7. CONTACTO DIRECTO (Sin formularios sobrecargados) -->
+      <!-- ========================================== -->
+      <section id="contacto" class="py-14 sm:py-16 bg-slate-50 border-b border-slate-200 transition-all duration-700 ease-out opacity-0 translate-y-8 motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           
           <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
@@ -476,6 +626,7 @@
           <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
           <a href="#caracteristicas" class="hover:text-white transition-colors">Características</a>
           <a href="#ubicacion" class="hover:text-white transition-colors">Ubicación</a>
+          <a href="#requisitos" class="hover:text-white transition-colors">Requisitos</a>
           <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
         </div>
 
